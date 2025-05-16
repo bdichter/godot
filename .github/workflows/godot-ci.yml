@@ -5,8 +5,8 @@ on: push
 
 env:
   GODOT_VERSION: 4.3
-  EXPORT_NAME: pong
-  PROJECT_PATH: pong
+  EXPORT_NAME: test-project
+  PROJECT_PATH: test-project
 
 jobs:
   export-windows:
