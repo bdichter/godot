@@ -1,5 +1,8 @@
 name: "godot-ci export"
-on: push
+on:
+  push:
+    tags:
+      - "v*.*.*"
 
 # NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` below to ".".
 
@@ -66,6 +69,12 @@ jobs:
         with:
           name: linux
           path: build/linux
+      - name: Release
+        uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          filename: release
+          path: ./build/release/*.zip
 
   export-mac:
     name: Mac Export
@@ -92,8 +101,8 @@ jobs:
         with:
           name: mac
           path: build/mac
-      - name: Changelog
-        uses: scottbrenner/generate-changelog-action@master
-        id: Changelog
-        env:
-          REPO: ${{ github.repository }}
+      # - name: Changelog
+      #   uses: scottbrenner/generate-changelog-action@master
+      #   id: Changelog
+      #   env:
+      #     REPO: ${{ github.repository }}
