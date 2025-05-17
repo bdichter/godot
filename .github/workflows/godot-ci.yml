@@ -70,12 +70,6 @@ jobs:
         with:
           name: linux
           path: build/linux
-      - name: Release
-        uses: HEPTAhu/upload_github_release_assets_action@v0.0.5
-        if: startsWith(github.ref, 'refs/tags/')
-        with:
-          filename: linux
-          path: ./build/linux.zip
 
   export-mac:
     name: Mac Export
