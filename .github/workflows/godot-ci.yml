@@ -4,9 +4,13 @@ on: push
 # NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` below to ".".
 
 env:
-  GODOT_VERSION: 4.4
+  GODOT_VERSION: 4
   EXPORT_NAME: test-project
   PROJECT_PATH: test-project
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   export-windows:
